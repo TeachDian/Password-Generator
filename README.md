@@ -1,7 +1,3 @@
-Sure, here's a detailed README.md for the password generator app:
-
----
-
 # Password Generator App
 
 This is a modern, responsive password generator web application built with Flask. It allows users to generate passwords based on specified criteria such as length and character types, and provides feedback on the strength of the generated password.
@@ -83,8 +79,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or suggestions, please open an issue or contact the project maintainer at your-email@example.com.
-
----
-
-This README.md provides a comprehensive overview of the password generator application, including its features, setup instructions, usage, and more. Adjust the email and repository URL as needed.
+For any questions or suggestions, please open an issue or contact the project maintainer at philiptenibas@gmail.com.
