@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="/" method="post">
+            <div class="input-group">
+                <label for="length">Password Length:</label>
+                <input type="range" id="length" name="length" min="1" max="100" value="{{ length }}" oninput="lengthOutput.value = length.value">
+                <output id="lengthOutput">{{ length }}</output>
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" name="lowercase" {% if use_lowercase %}checked{% endif %}> Include Lowercase (abc)
+                </label>
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" name="uppercase" {% if use_uppercase %}checked{% endif %}> Include Uppercase (ABC)
+                </label>
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" name="digits" {% if use_digits %}checked{% endif %}> Include Digits (123)
+                </label>
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" name="special" {% if use_special %}checked{% endif %}> Include Special (!@#)
+                </label>
+            </div>
+            <button type="submit">Generate Password</button>
+        </form>
+        {% if password %}
+            <div class="result">
+                <h2>Generated Password:</h2>
+                <div class="password-display">
+                    <p id="generated-password">{{ password }}</p>
+                    <button id="copy-btn">Copy</button>
+                </div>
+                <p id="strength"></p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
